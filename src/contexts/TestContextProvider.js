@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
-import { TestReducer } from "../reducers/TestReducers";
 import { TestContext } from ".";
+import { TestReducer } from "../reducers";
 
 const TestContextProvider = (props) => {
   const initialState = [];

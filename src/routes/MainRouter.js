@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AppRoute } from "./AppRoute";
+import { envexample } from "../shared/envkey";
 
 const MainRouter = () => {
   return (
@@ -15,6 +16,7 @@ const MainRouter = () => {
             ))}
           </ul>
         </nav>
+        {envexample}
         <Switch>
           {AppRoute.map((route, index) => (
             <Route key={index} path={route.path} exact={route.exact}>
