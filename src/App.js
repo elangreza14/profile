@@ -1,9 +1,13 @@
-import React from 'react';
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
+import React from "react";
+import TestContextProvider from "./contexts/TestContextProvider";
+import MainRouter from "./routes/MainRouter";
 
 function App() {
-  return (<div>test</div>);
+  return (
+    <TestContextProvider>
+      <MainRouter />
+    </TestContextProvider>
+  );
 }
 
 export default App;
