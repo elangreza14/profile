@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import { TestContext } from "../../../../../contexts";
 
 const TokoSatu = () => {
-  const { dispatch } = useContext(TestContext);
+  const { cart, dispatch } = useContext(TestContext);
   const [tokoSatuQty, setTokoSatuQty] = useState([]);
   const tokoSatu = [
     { id: 4, name: "soju", price: 500 },
@@ -12,15 +12,52 @@ const TokoSatu = () => {
 
   useEffect(() => {
     if (tokoSatuQty.length < 1) {
-      // SyncManager.forEach(()=>{
-
-      // })
-      tokoSatu.forEach((x) => {
-        x.qty = 0;
+      tokoSatu.forEach((y) => {
+        y.qty = 0;
+      });
+      cart.forEach((x) => {
+        tokoSatu.forEach((y) => {
+          if (y.id === x.id) {
+            y.qty = x.qty + y.qty;
+          }
+        });
       });
       setTokoSatuQty(tokoSatu);
     }
-  }, [tokoSatu, tokoSatuQty]);
+  }, [tokoSatu, tokoSatuQty, cart]);
+
+  const addQty = (menu) => {
+    callbackAddQty(menu);
+    dispatch({ type: "ADD_QTY", addstuff: menu.id });
+  };
+
+  const callbackAddQty = useCallback((menu) => {
+    setTokoSatuQty((old) =>
+      old.map((x) => (x.id === menu.id ? { ...x, qty: x.qty + 1 } : x))
+    );
+  }, []);
+
+  const decQty = (menu) => {
+    callbackDecQty(menu);
+    dispatch({ type: "REMOVE_QTY", decstuff: menu.id });
+  };
+
+  const callbackDecQty = useCallback((menu) => {
+    setTokoSatuQty((old) =>
+      old.map((x) => (x.id === menu.id ? { ...x, qty: x.qty - 1 } : x))
+    );
+  }, []);
+
+  const removeItem = (menu) => {
+    callbackRemoveItemQty(menu);
+    dispatch({ type: "REMOVE_ITEM", decItem: menu.id });
+  };
+
+  const callbackRemoveItemQty = useCallback((menu) => {
+    setTokoSatuQty((old) =>
+      old.map((x) => (x.id === menu.id ? { ...x, qty: x.qty - 1 } : x))
+    );
+  }, []);
 
   return (
     <div>
@@ -31,11 +68,16 @@ const TokoSatu = () => {
             onClick={() =>
               menu.qty === 0
                 ? dispatch({ type: "ADD_ITEM", addItem: menu })
-                : dispatch({ type: "ADD_QTY", addstuff: menu })
+                : addQty(menu)
             }
           >
             {menu.qty < 1 ? "add item" : "add qty"}
-            {/* {menu.name} */}
+          </button>
+          <h3>{menu.qty}</h3>
+          <button
+            onClick={() => (menu.qty > 1 ? decQty(menu) : removeItem(menu))}
+          >
+            {menu.qty > 0 ? "dec qty" : "remove item"}
           </button>
         </div>
       ))}

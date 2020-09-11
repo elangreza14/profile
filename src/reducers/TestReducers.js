@@ -6,14 +6,15 @@ export const TestReducer = (state, action) => {
       const search = state.findIndex((x) => x === action.addItem);
       return search < 0 ? [...state, item] : state;
     case "REMOVE_ITEM":
-      return state.filter((x) => x !== action.decItem);
+      return state.filter((x) => x.id !== action.decItem);
     case "ADD_QTY":
-      const find = state.findIndex((x) => x === action.addstuff);
-      state[find].qty += 1;
-      console.log(state);
-      return state;
+      return state.map((x) =>
+        x.id === action.addstuff ? { ...x, qty: x.qty + 1 } : x
+      );
     case "REMOVE_QTY":
-      return { count: state.count - 1 };
+      return state.map((x) =>
+        x.id === action.decstuff ? { ...x, qty: x.qty - 1 } : x
+      );
     case "MODIFY_ITEM":
       return { count: state.count - 1 };
     case "RESET":
