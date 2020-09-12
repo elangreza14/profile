@@ -1,30 +1,24 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Header } from "../shared/components/organisms";
 import { AppRoute } from "./AppRoute";
-import { envexample } from "../shared/envkey";
+// import { envexample } from "../shared/envkey";
 
 const MainRouter = () => {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            {AppRoute.map((route, index) => (
-              <li key={index}>
-                <Link to={route.path}>{route.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        {envexample}
-        <Switch>
-          {AppRoute.map((route, index) => (
-            <Route key={index} path={route.path} exact={route.exact}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header />
+      </Suspense>
+      <Switch>
+        {AppRoute.map((route, index) => (
+          <Route key={index} path={route.path} exact={route.exact}>
+            <Suspense fallback={<div>Loading...</div>}>
               <route.component />
-            </Route>
-          ))}
-        </Switch>
-      </div>
+            </Suspense>
+          </Route>
+        ))}
+      </Switch>
     </Router>
   );
 };

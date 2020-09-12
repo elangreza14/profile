@@ -1,3 +1,4 @@
-import Cart from "./Cart";
+import { lazy } from "react";
+const Cart = lazy(() => import("./Cart"));
 
 export { Cart };

@@ -1,10 +1,16 @@
-import { Cart, TokoDua, TokoSatu } from "../shared/components/pages/App";
+import { Cart, Home, TokoDua, TokoSatu } from "../shared/components/pages/App";
 
 export const AppRoute = [
   {
+    component: Home,
+    name: "Home",
+    path: "/",
+    exact: true,
+  },
+  {
     component: Cart,
     name: "Cart",
-    path: "/",
+    path: "/Cart",
     exact: true,
   },
   {
