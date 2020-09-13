@@ -14,6 +14,7 @@ const Button = (props) => {
     buttonStyle,
     buttonSize,
     fontWeight,
+    link
   } = props;
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
@@ -22,7 +23,7 @@ const Button = (props) => {
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return condition === "link" ? (
-    <Link to="/sign-up" className="btn-mobile">
+    <Link to={link} className="btn-mobile">
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}

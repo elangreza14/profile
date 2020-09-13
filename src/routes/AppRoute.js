@@ -1,4 +1,5 @@
 import { Cart, Home, TokoDua, TokoSatu } from "../shared/components/pages/App";
+import { NotFound } from "../shared/components/pages/NotFound";
 
 export const AppRoute = [
   {
@@ -24,5 +25,11 @@ export const AppRoute = [
     name: "Toko Dua",
     path: "/tokodua",
     exact: true,
+  },
+  {
+    component: NotFound,
+    name: "Not Found",
+    path: "*",
+    exact: false,
   },
 ];

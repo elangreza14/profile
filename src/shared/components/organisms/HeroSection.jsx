@@ -1,5 +1,4 @@
 import React from "react";
-import HomepageSolar from "../../../assets/images/HomepageSolar.jpg";
 import { Button } from "../atoms";
 import "../../../App/App.css";
 import "./styles/HeroSection.css";
@@ -9,7 +8,7 @@ const HeroSection = (props) => {
   return (
     <div style={{ maxHeight: height - 230 }} className="hero-container">
       <img
-        src={HomepageSolar}
+        src={require("../../../assets/images/HomepageSolar.webp")}
         alt="homepage"
         style={{ maxHeight: height - 230 }}
         className="bigimage"
@@ -19,6 +18,7 @@ const HeroSection = (props) => {
       <div className="hero-btns">
         <Button
           condition="link"
+          link="/"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
         >
@@ -26,10 +26,11 @@ const HeroSection = (props) => {
         </Button>
         <Button
           condition="link"
+          link="/"
           buttonStyle="btn--primary"
           buttonSize="btn--large"
         >
-          GET TO KNOW US
+          GET TO KNOW HOW WE WORK
         </Button>
       </div>
     </div>

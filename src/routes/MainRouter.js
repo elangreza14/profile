@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header } from "../shared/components/organisms";
 import { AppRoute } from "./AppRoute";
-// import { envexample } from "../shared/envkey";
 
 const MainRouter = () => {
   return (

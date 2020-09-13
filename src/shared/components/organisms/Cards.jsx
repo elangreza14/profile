@@ -1,10 +1,9 @@
 import React, { Suspense } from "react";
 import { CardItem } from ".";
 import "./styles/Cards.css";
-import Satu from "../../../assets/images/Satu.jpg";
-import Dua from "../../../assets/images/Dua.jpg";
 
-const Cards = () => {
+const Cards = (props) => {
+  // const { height } = props;
   return (
     <div className="cards">
       <h1>Check out these epic Offers</h1>
@@ -13,13 +12,13 @@ const Cards = () => {
           <ul className="cards__items">
             <Suspense fallback={<div>Loading...</div>}>
               <CardItem
-                src={Satu}
+                src={require("../../../assets/images/Satu.webp")}
                 text="Explore New Investment in Energy"
                 label="News"
                 path="/"
               />
               <CardItem
-                src={Dua}
+                src={require("../../../assets/images/Dua.webp")}
                 text="New 500KW Power you can Buy in Jawa"
                 label="Sell"
                 path="/"
@@ -29,19 +28,19 @@ const Cards = () => {
           <ul className="cards__items">
             <Suspense fallback={<div>Loading...</div>}>
               <CardItem
-                src={Satu}
+                src={require("../../../assets/images/Empat.webp")}
                 text="Explore New Investment in Energy"
                 label="News"
                 path="/"
               />
               <CardItem
-                src={Dua}
+                src={require("../../../assets/images/Tiga.webp")}
                 text="New 500KW Power you can Buy in Jawa"
                 label="Sell"
                 path="/tokosatu"
               />
               <CardItem
-                src={Dua}
+                src={require("../../../assets/images/Dua.webp")}
                 text="New 500KW Power you can Buy in Jawa"
                 label="Sell"
                 path="/"

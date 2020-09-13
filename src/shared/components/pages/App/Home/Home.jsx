@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { useWindowSize } from "../../../../hooks";
-import { HeroSection } from "../../../organisms";
+import { Footer, HeroSection } from "../../../organisms";
 import Cards from "../../../organisms/Cards";
 
 const Home = () => {
@@ -11,7 +11,10 @@ const Home = () => {
         <HeroSection height={height} />
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
-        <Cards />
+        <Cards height={height} />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Footer />
       </Suspense>
     </div>
   );

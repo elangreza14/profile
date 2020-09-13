@@ -1,15 +1,15 @@
 import React, { useReducer } from "react";
-import { TestContext } from ".";
+import { StoreContext } from ".";
 import { TestReducer } from "../reducers";
 
-const TestContextProvider = (props) => {
+const StoreContextProvider = (props) => {
   const initialState = [];
   const [cart, dispatch] = useReducer(TestReducer, initialState);
   return (
-    <TestContext.Provider value={{ cart, dispatch }}>
+    <StoreContext.Provider value={{ cart, dispatch }}>
       {props.children}
-    </TestContext.Provider>
+    </StoreContext.Provider>
   );
 };
 
-export default TestContextProvider;
+export default StoreContextProvider;

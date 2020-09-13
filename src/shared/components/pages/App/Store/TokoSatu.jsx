@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
-import { TestContext } from "../../../../../contexts";
+import { StoreContext } from "../../../../../contexts";
 
 const TokoSatu = () => {
-  const { cart, dispatch } = useContext(TestContext);
+  const { cart, dispatch } = useContext(StoreContext);
   const [tokoSatuQty, setTokoSatuQty] = useState([]);
   const tokoSatu = [
     { id: 4, name: "soju", price: 500 },

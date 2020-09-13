@@ -1,13 +1,13 @@
 import React from "react";
-import TestContextProvider from "../contexts/TestContextProvider";
+import StoreContextProvider from "../contexts/StoreContextProvider";
 import MainRouter from "../routes/MainRouter";
 import './App.css'
 
 function App() {
   return (
-    <TestContextProvider>
+    <StoreContextProvider>
       <MainRouter />
-    </TestContextProvider>
+    </StoreContextProvider>
   );
 }
 
